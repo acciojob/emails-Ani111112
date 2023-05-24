@@ -1,5 +1,7 @@
 package com.driver;
 
+import java.util.concurrent.CompletionException;
+
 public class Email {
 
     private String emailId;
@@ -25,5 +27,26 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
+        if(!oldPassword.equals(this.password)) System.out.println("Incorrect Password");
+        if(newPassword.length() < 8) System.out.println("Password Have Atleat 8 Characters");
+        //now check this password have in correct formate or not
+        boolean UpperCaseCharacter = false;
+        boolean LowerCaseCharacter = false;
+        boolean digit = false;
+        boolean specialCharacter = false;
+        for(int i = 0; i < newPassword.length(); i++) {
+            //check every boolean variable now
+            char ch = newPassword.charAt(i);
+            if (ch >= '0' && ch <= '9')digit = true;
+            else if (ch >= 'A' && ch <= 'Z')UpperCaseCharacter = true;
+            else if (ch >= 'a' && ch <= 'z')LowerCaseCharacter = true;
+            else specialCharacter = true;
+        }
+        //now if everything is true then only we you are able to change the password
+        if(digit && UpperCaseCharacter && LowerCaseCharacter && specialCharacter && !oldPassword.equals(newPassword)){
+            this.password = newPassword;
+        }else if(oldPassword.equals(newPassword)) {
+            System.out.println("Your New Password Should Not Be Same");
+        }else System.out.println("Your Password Not Meets All The Conditions");
     }
 }
