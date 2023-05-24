@@ -32,7 +32,7 @@ public class Email {
             return;
         }
         if(newPassword.length() < 8) {
-            System.out.println("Password Have Atleat 8 Characters");
+            System.out.println("Password contains at least 8 characters.");
             return;
         }
         //now check this password have in correct formate or not
@@ -52,8 +52,6 @@ public class Email {
         if(digit && UpperCaseCharacter && LowerCaseCharacter && specialCharacter){
             this.password = newPassword;
             System.out.println("Password Changed Successfully");
-        }else if(oldPassword.equals(newPassword)) {
-            System.out.println("Your New Password Should Not Be Same");
         }else System.out.println("Your Password Not Meets All The Conditions");
     }
 }

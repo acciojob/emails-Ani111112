@@ -29,11 +29,9 @@ public class Gmail extends Email {
             Triple<Date, String, String> oldMail = inbox.get(0);
             inbox.remove(0);
             trash.add(oldMail);
-            this.inboxCapacity--;
         }
         //add recent mail
         inbox.add(Triple.of(date, sender,message));
-        inboxCapacity++;
     }
 
     public void deleteMail(String message){
@@ -43,8 +41,6 @@ public class Gmail extends Email {
             Triple<Date, String, String> currMail = inbox.get(i);
             if (currMail.getRight().equals(message)) {
                 inbox.remove(i);
-                //decrease the size of inbox
-                this.inboxCapacity--;
                 trash.add(currMail);
                 break;
             }
@@ -92,7 +88,8 @@ public class Gmail extends Email {
 
     public void emptyTrash(){
         // clear all mails in the trash
-        trash.clear();
+        trash = new ArrayList<>();
+//        trash.clear();
     }
 
     public int getInboxCapacity() {
