@@ -27,8 +27,14 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
-        if(!oldPassword.equals(this.password)) System.out.println("Incorrect Password");
-        if(newPassword.length() < 8) System.out.println("Password Have Atleat 8 Characters");
+        if(!oldPassword.equals(this.password)) {
+            System.out.println("Incorrect Password");
+            return;
+        }
+        if(newPassword.length() < 8) {
+            System.out.println("Password Have Atleat 8 Characters");
+            return;
+        }
         //now check this password have in correct formate or not
         boolean UpperCaseCharacter = false;
         boolean LowerCaseCharacter = false;
@@ -43,8 +49,9 @@ public class Email {
             else specialCharacter = true;
         }
         //now if everything is true then only we you are able to change the password
-        if(digit && UpperCaseCharacter && LowerCaseCharacter && specialCharacter && !oldPassword.equals(newPassword)){
+        if(digit && UpperCaseCharacter && LowerCaseCharacter && specialCharacter){
             this.password = newPassword;
+            System.out.println("Password Changed Successfully");
         }else if(oldPassword.equals(newPassword)) {
             System.out.println("Your New Password Should Not Be Same");
         }else System.out.println("Your Password Not Meets All The Conditions");
